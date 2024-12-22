@@ -1,0 +1,14 @@
+# Adresse du serveur
+serverAddress=127.0.0.1
+
+# Port utilisé par le serveur et le client
+port=12345
+# MASTER_PORT=12345
+slave_adresses=127.0.0.1,127.0.0.1,127.0.0.1
+slave_ports=23456,23457,23458
+# Répertoires pour les fichiers uploadés
+uploadsDir=/home/ioty/transfert_fichier/uploads
+part1Dir=/home/ioty/transfert_fichier/uploads/part1
+part2Dir=/home/ioty/transfert_fichier/uploads/part2
+part3Dir=/home/ioty/transfert_fichier/uploads/part3
+

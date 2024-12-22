@@ -1,0 +1,22 @@
+ // envoyerFichier("/home/ioty/Documents/sims.c", dos);
+            downloadFile("sims.c",dis,dos);
+
+
+changer completemene le cote client mais faire un cote graphique, interface swing
+comme une sorte d'application qui permet de gerer le fonctionnalite recente
+Upload, download,liste,remove
+ 
+dans la page principale il y aura deux bouton
+Uploader fichier et liste
+pour upload, je veux que ca doit directement comme dans "parcourir" comme 
+dans les explorateurs de fichiers on on selectionne le fichier aue l'on va uplodder
+on pourra parcourir les fichier dans l'interface swing et quand on va selectionner
+le fichier qu'on veut uploader ca appelera la fonction upload selon le chemin du 
+fichier choisir
+
+puis dans ajouter un fonctionnalite qui liste tout ce 
+qu'il y a dans le serveur 
+puis a cote de chaque contenu ajouter une iconne corbeille 
+qui permet de supprimer un fichier su serveur
+puis ajouter une iconne download qui permet de downloader le fichier
+se servir des quatres fonctions deja creee dans client/serveur, les mofifier si necessaire

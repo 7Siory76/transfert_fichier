@@ -1,0 +1,88 @@
+ <stdio.h>
+#include <stdlib.h>
+
+// Fonction pour afficher le contenu du tableau (vecteur ou matrice)
+void displayResult(int dimension, float tableau[dimension]) {
+    // printf("Contenu du tableau :\n");
+    for (int i = 0; i < dimension; i++) {
+        printf("%.2f ", tableau[i]); // Affiche l'élément tableau[i]
+    }
+    printf("\n");
+}
+
+// Fonction pour effectuer la triangularisation de Gauss (avec un tableau à une dimension pour les lignes de la matrice)
+void triangularisation(float matriceA[], float b[], int dimension) {
+    printf("\nOn resoud l'equation par la methode de triangularisation\n");
+    printf("\n  en reduisant les lignes sous la diagoanale\n");
+    for (int i = 0; i < dimension; i++) {
+       
+
+        
+        // Réduire les lignes sous la diagonale
+        for (int j = i + 1; j < dimension; j++) {
+            if (matriceA[j * dimension + i] != 0) {
+                float factor = matriceA[j * dimension + i] / matriceA[i * dimension + i];
+                for (int k = i; k < dimension; k++) {
+                    matriceA[j * dimension + k] -= factor * matriceA[i * dimension + k];
+                }
+
+                b[j] -= factor * b[i];
+//refaire avec l'algo de monsieur
+
+            }
+        }
+    }
+}
+
+// Fonction pour résoudre un système triangulaire supérieur
+void resoudreSysteme(float matriceA[], float b[], float solution[], int dimension) {
+    // Substitution inverse
+    for (int i = dimension - 1; i >= 0; i--) {
+        solution[i] = b[i];
+        for (int j = i + 1; j < dimension; j++) {
+            solution[i] -= matriceA[i * dimension + j] * solution[j];
+        }
+        solution[i] /= matriceA[i * dimension + i];
+    }
+}
+
+int main() {
+    printf("Donnees\n");
+
+    int dim = 3;
+    // Déclaration et initialisation de la matrice A (stockée dans un tableau à une dimension)
+    float matriceA[9] = {
+        4, 8, 12,   // Ligne 0
+        3, 8, 13,   // Ligne 1
+        2, 9, 18    // Ligne 2
+    };
+
+    // Déclaration et initialisation du vecteur b
+    float b[3] = {4, 5, 11};
+
+    // Affichage des données d'origine
+    printf("matrice avant triangularisation");
+    displayResult(dim, matriceA);
+
+    // displayResult(dim, b);
+
+    // Triangularisation de la matrice A
+    triangularisation(matriceA, b, dim);
+
+    // Affichage de la matrice après triangularisation
+    printf("\nMatrice après triangularisation :\n");
+    displayResult(dim, matriceA);
+    displayResult(dim, b);
+
+    // Résolution du système
+    float solution[3];
+    resoudreSysteme(matriceA, b, solution, dim);
+
+    // Affichage de la solution
+    printf("\nSolution du système :\n");
+    for (int i = 0; i < dim; i++) {
+        printf("x[%d] = %.2f\n", i, solution[i]);
+    }
+
+    return 0;
+}
